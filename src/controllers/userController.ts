@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { ObjectId } from 'mongodb';
 import User from '../models/User.js';
 
 export const createUser = async (req: Request, res: Response) => {
@@ -11,7 +10,7 @@ export const createUser = async (req: Request, res: Response) => {
     }
 };
 
-export const getAllUsers = async (req: Request, res: Response) => {
+export const getAllUsers = async (_req: Request, res: Response) => {
     try {
         const users = await User.find().populate('thoughts').populate('friends');
         res.status(200).json(users)
@@ -24,7 +23,7 @@ export const getUserById = async (req: Request, res: Response) => {
     try {
         const user = await User.findById(req.params.userId).populate('thoughts').populate('friends');
         if (!user) {
-            res.status(404).json({ message: 'No user found with this id!' });
+            res.status(404).json({ message: 'There is NO USER found with this id!' });
             return;
         }
         res.status(200).json(user);
@@ -37,7 +36,7 @@ export const updateUser = async (req: Request, res: Response) => {
     try {
         const user = await User.findByIdAndUpdate(req.params.userId, req.body, { new: true });
         if (!user) {
-            res.status(404).json({ message: 'No user found with this id!' });
+            res.status(404).json({ message: 'There is NO USER found with this id!' });
             return;
         }
         res.status(200).json(user);

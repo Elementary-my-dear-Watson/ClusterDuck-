@@ -11,7 +11,7 @@ export const createThought = async (req: Request, res: Response) => {
         res.status(500).json(err);
     }
 };
-export const getAllThoughts = async (req: Request, res: Response) => {
+export const getAllThoughts = async (_req: Request, res: Response) => {
     try {
         const thoughts = await Thought.find();
         res.status(200).json(thoughts);

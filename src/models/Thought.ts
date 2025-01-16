@@ -1,4 +1,5 @@
-import mongoose, { Schema, Types, Document } from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose';
+import reactionSchema from './Reaction.js';
 
 interface IThought extends Document {
     thoughtText: string;
@@ -23,10 +24,7 @@ const thoughtSchema = new Schema<IThought>({
         type: String,
         required: true,
     },
-    reactions: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Reaction',
-    }],
+    reactions:[reactionSchema],
 })
 
 thoughtSchema.virtual('reationCount').get(function(this: IThought) {
@@ -35,4 +33,5 @@ thoughtSchema.virtual('reationCount').get(function(this: IThought) {
 
 const Thought = mongoose.model<IThought>('Thought', thoughtSchema);
 
+export {IThought};
 export default Thought;

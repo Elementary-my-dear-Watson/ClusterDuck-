@@ -1,5 +1,5 @@
-import mongoose, { Schema, Types, model, type Document } from 'mongoose';
-import { stringify } from 'querystring';
+import mongoose, { Schema, type Document } from 'mongoose';
+
 
 interface IUser extends Document {
     username: string;
@@ -37,5 +37,6 @@ userSchema.virtual('friendCount').get(function(this: IUser) {
 });
 
 const User = mongoose.model<IUser>('User', userSchema);
- 
+
+export {IUser};
 export default User;
