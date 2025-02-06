@@ -1,11 +1,10 @@
 import mongoose, { Schema, type Document } from 'mongoose';
 
-
 interface IUser extends Document {
     username: string;
     email: string;
     thoughts: mongoose.Schema.Types.ObjectId[];
-    friends: mongoose.Types.ObjectId[];
+    friends: mongoose.Schema.Types.ObjectId[];
     friendCount: number;
 }
 
@@ -20,7 +19,7 @@ const userSchema = new Schema<IUser>({
         type: String,
         required: true,
         unique: true,
-        trim: true, 
+        trim: true,
     },
     thoughts: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -38,5 +37,4 @@ userSchema.virtual('friendCount').get(function(this: IUser) {
 
 const User = mongoose.model<IUser>('User', userSchema);
 
-export {IUser};
 export default User;
