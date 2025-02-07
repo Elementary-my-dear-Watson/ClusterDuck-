@@ -150,9 +150,14 @@ ClusterDuck is a social media API designed with scalability and fun in mind. Wit
 
 ---
 
+## Screenshot examples of application in Insomnia
+![Imgur](https://i.imgur.com/Syyromy.png)
+![Imgur](https://i.imgur.com/0eqOInL.png)
+
 ## Walkthrough Video
 
-Check out the walkthrough video below to see ClusterDuck in action:
+Check out the walkthrough video below to see ClusterDuck in action:  
+[Click Me!](https://drive.google.com/file/d/1ffI5mikD4HqbLOKBri5csizc52Jw3ETs/view?usp=sharing)
 
 
 
