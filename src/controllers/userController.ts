@@ -20,18 +20,22 @@ export const getAllUsers = async (_req: Request, res: Response) => {
     }
 };
 
-export const getUserById = async (req: Request, res: Response) => {
+// 
+
+export const getUserById = async (req: Request, res: Response): Promise<void> => {
     try {
-        const user = await User.findById(req.params.userId).populate('thoughts').populate('friends');
-        if (!user) {
-            res.status(404).json({ message: 'There is NO USER found with this id!' });
-            return;
-        }
-        res.status(200).json(user);
+      const user = await User.findOne({ _id: req.params.userId });
+  
+      if (!user) {
+        res.status(404).json({ message: "No user with that ID" });
+        return; // Ensure function exits after sending the response
+      }
+  
+      res.json(user);
     } catch (err) {
-        res.status(500).json(err);
+      res.status(500).json(err);
     }
-};
+  };
 
 export const updateUser = async (req: Request, res: Response) => {
     try {
